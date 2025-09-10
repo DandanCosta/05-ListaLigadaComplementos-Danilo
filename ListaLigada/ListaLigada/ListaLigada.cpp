@@ -135,6 +135,7 @@ void inserirElemento()
 	{
 		primeiro = novo;
 		ultimo = novo;
+		ultimo->prox = NULL;
 	}
 	else
 	{
@@ -177,6 +178,11 @@ void excluirElemento()
 		if (valor == atual->valor) {
 			if (primeiro->valor == valor) {
 				primeiro = primeiro->prox;
+
+			}
+			else if(valor == ultimo->valor){
+				anterior->prox = NULL;
+				ultimo = anterior;
 
 			}
 			else {
