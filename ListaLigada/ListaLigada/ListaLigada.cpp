@@ -135,7 +135,6 @@ void inserirElemento()
 	{
 		primeiro = novo;
 		ultimo = novo;
-		ultimo->prox = NULL;
 	}
 	else
 	{
@@ -147,13 +146,6 @@ void inserirElemento()
 		}
 		ultimo->prox = novo;
 		ultimo = novo;
-
-		// procura o final da lista
-		/*NO* aux = primeiro;
-		while (aux->prox != NULL ) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;*/
 	}
 }
 

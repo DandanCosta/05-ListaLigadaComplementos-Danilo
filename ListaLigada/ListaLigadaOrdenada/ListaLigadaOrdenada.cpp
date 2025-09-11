@@ -33,7 +33,7 @@ void menu()
 	int op = 0;
 	while (op != 7) {
 		system("cls"); // somente no windows
-		cout << "Menu Lista Ligada";
+		cout << "Menu Lista Ligada Ordenada";
 		cout << endl << endl;
 		cout << "1 - Inicializar Lista \n";
 		cout << "2 - Exibir quantidade de elementos \n";
@@ -150,29 +150,6 @@ void inserirElemento()
 		anterior->prox = novo;
 	}
 	novo->prox = atual;
-	/*if (primeiro == NULL)
-	{
-		primeiro = novo;
-		ultimo = novo;
-		ultimo->prox = NULL;
-	}
-	else
-	{
-		if (posicaoElemento(novo->valor) != NULL) {
-
-			cout << "O numero digitado ja foi adicionado" << endl;
-			return;
-
-		}
-		ultimo->prox = novo;
-		ultimo = novo;*/
-
-		// procura o final da lista
-		/*NO* aux = primeiro;
-		while (aux->prox != NULL ) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;*/
 }
 
 
@@ -182,29 +159,27 @@ void excluirElemento()
 		cout << "Lista vazia" << endl;
 		return;
 	}
-	int valor;
+	int excluir;
 	cout << " Digite o valor a ser excluido: ";
-	cin >> valor;
-	NO* verifica = posicaoElemento(valor);
-	if (verifica == NULL) {
+	cin >> excluir;
+	NO* anterior = NULL;
+	NO* atual = primeiro;
+	
+	if (atual->valor > excluir) {
 		cout << "Elemento nao existe" << endl;
 		return;
 	}
-	NO* anterior = NULL;
-	NO* atual = primeiro;
 
 	while (atual != NULL) {
-		if (valor == atual->valor) {
-			if (primeiro->valor == valor) {
-				primeiro = primeiro->prox;
-
+		if (excluir == atual->valor){
+			if (atual->valor > excluir) {
+				cout << "Elemento nao existe" << endl;
+				return;
 			}
-			else if (valor == ultimo->valor) {
-				anterior->prox = NULL;
-				ultimo = anterior;
-
+			if (anterior == NULL){
+				primeiro = atual->prox;
 			}
-			else {
+			else{
 				anterior->prox = atual->prox;
 			}
 			break;
@@ -229,7 +204,7 @@ void buscarElemento()
 
 		cout << "Encontrado" << endl;
 	}
-	else {
+	else{
 		cout << "Nao encontrado" << endl;
 
 	}
